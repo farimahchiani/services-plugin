@@ -41,7 +41,13 @@ final class Services_Plugin_Loader
         wp_die(esc_html__('Cheatin&#8217; huh?', 'services-plugin'));
     }
 
-    private function load_dependencies() {}
+    private function load_dependencies()
+    {
+
+        require_once SERVICES_PLUGIN_PATH . 'includes/class-post-type.php';
+
+        new Services_Post_Type();
+    }
 
     private function init_hooks()
     {

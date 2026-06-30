@@ -13,7 +13,7 @@
  * Domain Path: /languages
  */
 
-defined('ABSPATH') || exit;
+defined( 'ABSPATH' ) || exit;
 
 define('SERVICES_PLUGIN_VERSION', '1.0.0');
 define('SERVICES_PLUGIN_PATH', plugin_dir_path(__FILE__));
