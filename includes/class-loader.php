@@ -42,6 +42,7 @@ final class Services_Plugin_Loader
 
         require_once SERVICES_PLUGIN_PATH . 'includes/class-post-type.php';
         require_once SERVICES_PLUGIN_PATH . 'includes/class-taxonomy.php';
+        require_once SERVICES_PLUGIN_PATH . 'includes/class-meta.php';
     }
 
     private function init_classes()
@@ -50,6 +51,8 @@ final class Services_Plugin_Loader
         $this->classes['post_type'] = new Services_Post_Type();
 
         $this->classes['taxonomy'] = new Services_Taxonomy();
+        
+        $this->classes['meta'] = new Services_Meta();
     }
 
     private function init_hooks()
