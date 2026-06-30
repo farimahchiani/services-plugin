@@ -60,5 +60,7 @@ class Services_Post_Type
         );
 
         register_post_type('service', $args);
+
+        error_log( 'SERVICE CPT REGISTERED' );
     }
 }

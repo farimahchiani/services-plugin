@@ -1,20 +1,13 @@
 <?php
 
-/**
- * Plugin bootstrap.
- *
- * @package Services_Plugin
- */
-
 defined('ABSPATH') || exit;
 
 final class Services_Plugin_Loader
 {
 
-    /**
-     * @var Services_Plugin_Loader|null
-     */
     private static $instance = null;
+
+    private $classes = array();
 
     public static function get_instance()
     {
@@ -30,6 +23,9 @@ final class Services_Plugin_Loader
     {
 
         $this->load_dependencies();
+
+        $this->init_classes();
+
         $this->init_hooks();
     }
 
@@ -45,8 +41,15 @@ final class Services_Plugin_Loader
     {
 
         require_once SERVICES_PLUGIN_PATH . 'includes/class-post-type.php';
+        require_once SERVICES_PLUGIN_PATH . 'includes/class-taxonomy.php';
+    }
 
-        new Services_Post_Type();
+    private function init_classes()
+    {
+
+        $this->classes['post_type'] = new Services_Post_Type();
+
+        $this->classes['taxonomy'] = new Services_Taxonomy();
     }
 
     private function init_hooks()
