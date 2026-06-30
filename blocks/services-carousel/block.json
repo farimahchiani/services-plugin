@@ -1,0 +1,15 @@
+{
+    "apiVersion": 2,
+    "name": "services/carousel",
+    "title": "Services Carousel",
+    "category": "widgets",
+    "icon": "images-alt2",
+    "editorScript": "file:./index.js",
+    "render": "file:./render.php",
+    "attributes": {
+        "number": {
+            "type": "number",
+            "default": 5
+        }
+    }
+}
