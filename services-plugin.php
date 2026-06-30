@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Plugin Name: Services Plugin
  * Plugin URI: https://github.com/farimahchiani/services-plugin
@@ -12,4 +13,19 @@
  * Domain Path: /languages
  */
 
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
+
+define('SERVICES_PLUGIN_VERSION', '1.0.0');
+define('SERVICES_PLUGIN_PATH', plugin_dir_path(__FILE__));
+define('SERVICES_PLUGIN_URL', plugin_dir_url(__FILE__));
+
+require_once SERVICES_PLUGIN_PATH . 'includes/helpers.php';
+require_once SERVICES_PLUGIN_PATH . 'includes/class-loader.php';
+
+
+function services_plugin()
+{
+    return Services_Plugin_Loader::get_instance();
+}
+
+services_plugin();
