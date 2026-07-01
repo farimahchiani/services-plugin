@@ -1,17 +1,53 @@
-import Inspector from './components/inspector';
-
 import { __ } from '@wordpress/i18n';
 
-export default function Edit() {
+import Inspector from './components/inspector';
+
+export default function Edit({
+    attributes,
+    setAttributes
+}) {
 
     return (
-        <>
-            <Inspector />
 
-            <p>
-                {__('Services Carousel Block', 'services-plugin')}
-            </p>
+        <>
+
+            <Inspector
+                attributes={attributes}
+                setAttributes={setAttributes}
+            />
+
+            <div className="wp-block-services-carousel">
+
+                <p>
+
+                    {__(
+                        'Services Carousel Preview',
+                        'services-plugin'
+                    )}
+
+                </p>
+
+                <p>
+
+                    {__(
+                        'Number of services:',
+                        'services-plugin'
+                    )}
+
+                    {' '}
+
+                    <strong>
+
+                        {attributes.postsToShow}
+
+                    </strong>
+
+                </p>
+
+            </div>
+
         </>
+
     );
 
 }
