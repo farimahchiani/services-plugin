@@ -56,7 +56,6 @@ final class Services_Plugin_Loader
 
     public function register_blocks()
     {
-        error_log('BLOCK REGISTER START');
 
         if (!function_exists('register_block_type')) {
             return;
@@ -65,8 +64,6 @@ final class Services_Plugin_Loader
         register_block_type(
             SERVICES_PLUGIN_PATH . 'blocks/services-carousel/block.json'
         );
-
-        error_log('BLOCK REGISTERED SUCCESS');
     }
 
     public function load_textdomain()
