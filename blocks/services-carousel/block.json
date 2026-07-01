@@ -4,12 +4,21 @@
     "title": "Services Carousel",
     "category": "widgets",
     "icon": "images-alt2",
+    "description": "Display Services in a carousel.",
     "editorScript": "file:./index.js",
     "render": "file:./render.php",
+
     "attributes": {
+
         "number": {
             "type": "number",
             "default": 5
+        },
+
+        "order": {
+            "type": "string",
+            "default": "DESC"
         }
+
     }
 }
