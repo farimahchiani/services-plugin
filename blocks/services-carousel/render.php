@@ -1,35 +1,73 @@
 <?php
 
+
 defined('ABSPATH') || exit;
 
-$number = $attributes['number'] ?? 5;
 
-$query = new WP_Query([
-    'post_type' => 'service',
-    'posts_per_page' => $number
-]);
+$number = isset($attributes['number'])
+    ? absint($attributes['number'])
+    : 5;
 
-echo '<div class="services-carousel">';
+$order = isset($attributes['order'])
+    ? sanitize_key($attributes['order'])
+    : 'DESC';
 
-while ($query->have_posts()) {
-    $query->the_post();
 
-    echo '<div class="service-item">';
+$args = array(
+    'post_type'      => 'service',
+    'post_status'    => 'publish',
+    'posts_per_page' => $number,
+    'orderby'        => 'date',
+    'order'          => $order,
+);
 
-    echo get_the_post_thumbnail(
-        get_the_ID(),
-        'medium'
-    );
+$query = new WP_Query($args);
 
-    echo '<h3>' . esc_html(get_the_title()) . '</h3>';
-
-    echo '<p>' . esc_html(get_the_excerpt()) . '</p>';
-
-    // echo '<span>' . esc_html(get_the_author()) . '</span>';
-
-    echo '</div>';
+if (! $query->have_posts()) {
+    return;
 }
+
+ob_start();
+?>
+
+<div class="services-carousel">
+
+    <?php while ($query->have_posts()) : ?>
+
+        <?php $query->the_post(); ?>
+
+        <article class="service-item">
+
+            <?php if (has_post_thumbnail()) : ?>
+
+                <div class="service-image">
+
+                    <?php the_post_thumbnail('medium'); ?>
+
+                </div>
+
+            <?php endif; ?>
+
+            <h3 class="service-title">
+
+                <?php the_title(); ?>
+
+            </h3>
+
+            <div class="service-excerpt">
+
+                <?php the_excerpt(); ?>
+
+            </div>
+
+        </article>
+
+    <?php endwhile; ?>
+
+</div>
+
+<?php
 
 wp_reset_postdata();
 
-echo '</div>';
+echo wp_kses_post(ob_get_clean());
