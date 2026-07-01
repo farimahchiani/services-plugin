@@ -1,0 +1,12 @@
+{
+    "name": "services-plugin",
+    "version": "1.0.0",
+    "description": "Services Plugin",
+    "scripts": {
+        "build": "wp-scripts build blocks/services-carousel/src/index.js --output-path=blocks/services-carousel/build",
+        "start": "wp-scripts start blocks/services-carousel/src/index.js --output-path=blocks/services-carousel/build"
+    },
+    "devDependencies": {
+        "@wordpress/scripts": "^30.0.0"
+    }
+}

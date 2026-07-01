@@ -1,24 +1,47 @@
 {
-    "apiVersion": 2,
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
     "name": "services/carousel",
+    "version": "1.0.0",
     "title": "Services Carousel",
     "category": "widgets",
     "icon": "images-alt2",
-    "description": "Display Services in a carousel.",
-    "editorScript": "file:./index.js",
-    "render": "file:./render.php",
-
+    "description": "Display services in a configurable carousel.",
+    "keywords": [
+        "services",
+        "carousel"
+    ],
+    "textdomain": "services-plugin",
+    "supports": {
+        "html": false
+    },
     "attributes": {
-
-        "number": {
+        "postsToShow": {
             "type": "number",
-            "default": 5
+            "default": 6
         },
-
         "order": {
             "type": "string",
             "default": "DESC"
+        },
+        "orderBy": {
+            "type": "string",
+            "default": "date"
+        },
+        "category": {
+            "type": "number",
+            "default": 0
+        },
+        "minPrice": {
+            "type": "number",
+            "default": 0
+        },
+        "maxPrice": {
+            "type": "number",
+            "default": 0
         }
-
-    }
+    },
+    "editorScript": "file:./build/index.js",
+    "editorStyle": "file:./build/index.css",
+    "render": "file:./render.php"
 }
