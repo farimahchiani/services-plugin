@@ -16,21 +16,21 @@
         "html": false
     },
     "attributes": {
-        "postsToShow": {
+        "number": {
             "type": "number",
-            "default": 6
+            "default": 5
         },
         "order": {
             "type": "string",
             "default": "DESC"
         },
-        "orderBy": {
+        "orderby": {
             "type": "string",
             "default": "date"
         },
         "category": {
-            "type": "number",
-            "default": 0
+            "type": "string",
+            "default": ""
         },
         "minPrice": {
             "type": "number",

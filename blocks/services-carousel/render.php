@@ -12,12 +12,33 @@ $order = isset($attributes['order'])
     ? sanitize_key($attributes['order'])
     : 'DESC';
 
+$orderby = isset($attributes['orderby'])
+    ? sanitize_key($attributes['orderby'])
+    : 'date';
+
+$allowed_order = array(
+    'ASC',
+    'DESC',
+);
+
+if (! in_array($order, $allowed_order, true)) {
+    $order = 'DESC';
+}
+
+$allowed_orderby = array(
+    'date',
+    'title',
+);
+
+if (! in_array($orderby, $allowed_orderby, true)) {
+    $orderby = 'date';
+}
 
 $args = array(
     'post_type'      => 'service',
     'post_status'    => 'publish',
     'posts_per_page' => $number,
-    'orderby'        => 'date',
+    'orderby'        => $orderby,
     'order'          => $order,
 );
 
